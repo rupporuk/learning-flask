@@ -76,6 +76,15 @@ CREATE TABLE `employees` (
   CONSTRAINT `employees_ibfk_2` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+LOCK TABLES `employees` WRITE;
+/*!40000 ALTER TABLE `employees` DISABLE KEYS */;
+
+INSERT INTO `employees` (`id`, `email`, `username`, `first_name`, `last_name`, `password_hash`, `department_id`, `role_id`, `is_admin`)
+VALUES
+	(1,'admin@admin.com','admin',NULL,NULL,'pbkdf2:sha256:50000$1EHau4N1$c5fa0a8b9c0ea687972efc9f619545456e33b0f108c6d8b6a540ee05ef320270',NULL,NULL,1);
+
+/*!40000 ALTER TABLE `employees` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table roles
